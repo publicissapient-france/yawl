@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" ng-app="yawl">
+<head>
+    <meta charset="utf-8">
+    <title>YAWL</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet/less" type="text/css" href="css/style.less"/>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular-route.min.js"></script>
+    <script src="//cdn.firebase.com/v0/firebase.js"></script>
+    <script src="//cdn.firebase.com/v0/firebase-simple-login.js"></script>
+    <script src="//cdn.firebase.com/libs/angularfire/0.5.0/angularfire.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.4.1/less.min.js"></script>
+</head>
+<body>
+
+<div class="content" ng-cloak>
+    <div class="ng-hide" id="header" ng-show="auth.user" ng-controller="headerCtrl as header">
+        <div class="pure-menu pure-menu-open pure-menu-horizontal">
+            <a class="pure-menu-heading" href=""><b>YAWL</b></a>
+
+            <ul>
+                <li class="pure-menu-selected"><a href="#/wl-collection">My wishlists</a></li>
+                <li><a href="#/about">About</a></li>
+            </ul>
+
+            <ul class="profile">
+                <li class="pure-menu-open">
+                    <a href="#"><span><i class="fa fa-user fa-border"></i> {{ auth.user.displayName }}</span></a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-heading">Provider: {{ auth.user.provider }}</li>
+                        <li class="pure-menu-separator"></li>
+                        <li><a href="" ng-click="header.logout()">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="content" ng-view></div>
+
+    <div id="footer" ng-show="auth.user">
+        © 2013 YAWL All Rights Reserved
+    </div>
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/services/fireRefService.js"></script>
+<script src="js/services/wishlistsService.js"></script>
+<script src="js/controllers/headerCtrl.js"></script>
+<script src="js/controllers/wishlistsCtrl.js"></script>
+<script src="js/controllers/wishlistCtrl.js"></script>
+<script src="js/controllers/loginCtrl.js"></script>
+
+</body>
+</html>

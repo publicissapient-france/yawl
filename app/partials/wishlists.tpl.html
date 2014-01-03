@@ -1,0 +1,82 @@
+<div class="wishlists" ng-controller="wishlistsCtrl as wishlists">
+    <h2>My wishlists</h2>
+
+    <div class="sep"></div>
+    <div class="no_items" ng-hide="wishlists.list.length">
+        <h3>No items...</h3>
+        <div class="sep"></div>
+    </div>
+
+    <div ng-init="wishlists.getWishlistCollection()">
+        <div ng-repeat="(wishlistId, wl) in wishlists.list">
+            <div class="main1">
+                <div class="main2">
+                    <div class="left">
+                        <div class="column-in">
+                        </div>
+                    </div>
+
+                    <div class="right">
+                        <div class="column-in">
+                            <button class="pure-button pure-button-small"
+                                    ng-click="wishlists.removeWishlist(wishlistId)">
+                                <i class="fa fa-trash-o"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+
+                    <a href="#/wl/{{ auth.user.id }}/{{ wishlistId }}">
+                        <div class="middle">
+                            <div class="column-in">
+                                <h3>
+                                    {{ wl.name }}
+                                    <span>{{ wl.creationDate | date }}</span>
+                                </h3>
+
+                                <p>{{ wl.description }}</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="sep"></div>
+            </div>
+        </div>
+    </div>
+
+    <form ng-show="showForm" ng-init="showForm = false; wishlist={}">
+        <div class="main1">
+            <div class="main2">
+                <div class="left">
+                    <div class="column-in">
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="column-in">
+                        <button class="pure-button pure-button-small" ng-click="wishlists.createWishlist(wishlist); showForm=false">
+                            <i class="fa fa-plus"></i> Add
+                        </button>
+                        <button class="pure-button pure-button-small" ng-click="showForm=false">
+                            <i class="fa fa-ban"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="middle">
+                    <div class="column-in">
+                        <h3>
+                            <input ng-model="wishlist.name" placeholder="Wishlist Name" required/>
+                        </h3>
+                        <textarea rows="3" cols="50" ng-model="wishlist.description" placeholder="Description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="sep"></div>
+        </div>
+    </form>
+
+    <button class="add" ng-click="showForm = true" ng-hide="showForm">
+        <i class="fa fa-plus"></i>
+    </button>
+
+</div>
