@@ -38,7 +38,6 @@ angular.module('yawl').run(['$rootScope', '$firebaseAuth', 'FBURL', 'Firebase', 
             if (redirect == "/login") {
                 $location.replace();
                 $location.path("/");
-                redirect = undefined;
             }
         });
 
