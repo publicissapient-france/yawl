@@ -1,4 +1,5 @@
 @content-wight: 900px;
+@content-wight-min: 550px;
 @background: #efefef url('../img/body.jpg') repeat top left;
 @border: 1px solid #b7b7b7;
 
@@ -77,7 +78,9 @@ a {
         .pure-menu {
             padding: .5em 10px .5em 10px;
             opacity: 0.95;
-            width: @content-wight;
+            max-width: @content-wight - 20px;
+            min-width: @content-wight-min;
+            width: 100%;
             margin: auto;
 
             .pure-menu-open {
@@ -125,12 +128,14 @@ a {
 
     #content {
         background-color: whitesmoke;
-        width: @content-wight;
+        max-width: @content-wight;
+        min-width: @content-wight-min;
+        width: 100%;
         margin: 70px auto 70px auto;
-        padding: 10px;
         .border(4px);
 
         .wishlists {
+            margin: 10px;
             .column-3-layout(0px, 115px, 0px, 14px);
 
             h2 {
@@ -179,10 +184,12 @@ a {
         }
 
         .wishlist {
+            margin: 10px;
             .wishes-header {
                 input {
+                    display: block;
                     margin-bottom: 10px;
-                    width: 90%;
+                    width: 99%;
                 }
             }
 
